@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Logan J. Pallin — Marine Vertebrate Ecophysiologist at UC Santa Cruz. Research on baleen whale physiology, reproductive biology, and climate change impacts on Southern Ocean ecosystems.">
+  <title>Logan J. Pallin | Marine Ecophysiology</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* =============================================
+       DESIGN TOKENS
+    ============================================= */
+    :root {
+      --c-navy:       #0c1f35;
+      --c-navy-mid:   #1a3a5c;
+      --c-ocean:      #1d6fa4;
+      --c-teal:       #0a9396;
+      --c-teal-light: #94d2bd;
+      --c-gold:       #e9c46a;
+      --c-coral:      #e76f51;
+      --c-cream:      #f7f4ef;
+      --c-white:      #ffffff;
+      --c-text:       #162330;
+      --c-text-mid:   #3d5570;
+      --c-text-light: #6b8199;
+      --c-border:     #dde6f0;
+      --shadow-sm:    0 1px 4px rgba(12,31,53,.08);
+      --shadow-md:    0 4px 24px rgba(12,31,53,.11);
+      --shadow-lg:    0 10px 48px rgba(12,31,53,.16);
+      --f-display:    'Playfair Display', Georgia, serif;
+      --f-body:       'DM Sans', system-ui, -apple-system, sans-serif;
+      --f-mono:       'Space Mono', 'Courier New', monospace;
+      --nav-h:        72px;
+      --radius:       12px;
+      --radius-sm:    8px;
+      --container:    1160px;
+      --ease:         cubic-bezier(0.4, 0, 0.2, 1);
+      --t:            0.3s var(--ease);
+    }
+
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--f-body);
+      color: var(--c-text);
+      background: var(--c-cream);
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: var(--c-teal); text-decoration: none; transition: color var(--t); }
+    a:hover { color: var(--c-ocean); }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* =============================================
+       SECTION SYSTEM
+    ============================================= */
+    .page-section {
+      display: none;
+      min-height: calc(100vh - var(--nav-h));
+      padding-top: var(--nav-h);
+      animation: fadeIn 0.4s var(--ease);
+    }
+    .page-section.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =============================================
+       NAVIGATION
+    ============================================= */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      background: var(--c-navy);
+      border-bottom: 2px solid rgba(10,147,150,0.5);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .nav-brand {
+      font-family: var(--f-display);
+      font-size: 1.2rem;
+      color: var(--c-white);
+      cursor: pointer;
+      transition: color var(--t);
+      line-height: 1.2;
+    }
+    .nav-brand:hover { color: var(--c-teal-light); }
+    .nav-brand span {
+      display: block;
+      font-family: var(--f-body);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--c-teal-light);
+      margin-top: 2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+    }
+    .nav-links a {
+      display: block;
+      padding: 8px 13px;
+      color: rgba(255,255,255,0.68);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      transition: all var(--t);
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .nav-links a.active { color: var(--c-gold); background: rgba(233,196,106,0.12); }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all var(--t);
+    }
+
+    /* =============================================
+       SHARED SECTION HEADERS
+    ============================================= */
+    .section-header {
+      padding: 72px 0 48px;
+      text-align: center;
+    }
+    .section-eyebrow {
+      font-family: var(--f-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-teal);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--f-display);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--c-navy);
+      line-height: 1.18;
+      margin-bottom: 18px;
+    }
+    .section-subtitle {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      color: var(--c-text-mid);
+      line-height: 1.75;
+    }
+    .section-rule {
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--c-teal), var(--c-ocean));
+      border-radius: 2px;
+      margin: 24px auto 0;
+    }
+
+    /* =============================================
+       HOME
+    ============================================= */
+    .home-hero {
+      min-height: calc(100vh - var(--nav-h));
+      background: var(--c-navy);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .home-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 60%, rgba(10,147,150,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 20%, rgba(29,111,164,0.13) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(12,31,53,0.5) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 40px;
+      position: relative;
+    }
+    .profile-photo-wrap {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      margin-bottom: 28px;
+      flex-shrink: 0;
+    }
+    .profile-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--c-teal) 0%, var(--c-gold) 100%);
+    }
+    /* PHOTO: Replace .profile-placeholder with <img class="profile-photo" src="images/logan-pallin.jpg" alt="Logan J. Pallin"> */
+    .profile-photo {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--c-navy);
+    }
+    .profile-placeholder {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--c-navy-mid) 0%, #0f3557 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 5px solid var(--c-navy);
+    }
+    .profile-placeholder span {
+      font-family: var(--f-display);
+      font-size: 3.2rem;
+      color: rgba(255,255,255,0.45);
+      font-weight: 600;
+    }
+    .hero-specialty-tag {
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--c-teal-light);
+      background: rgba(10,147,150,0.14);
+      border: 1px solid rgba(10,147,150,0.32);
+      border-radius: 100px;
+      padding: 7px 20px;
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px 48px 64px 8px;
+      position: relative;
+    }
+    .hero-eyebrow {
+      font-family: var(--f-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-bottom: 16px;
+    }
+    .hero-name {
+      font-family: var(--f-display);
+      font-size: clamp(2.6rem, 4.5vw, 4rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.12;
+      margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.55;
+      margin-bottom: 6px;
+    }
+    .hero-institution {
+      font-size: 0.9rem;
+      color: var(--c-teal-light);
+      font-weight: 500;
+      margin-bottom: 32px;
+    }
+    .hero-bio {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.82;
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .stat-value {
+      font-family: var(--f-display);
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--c-gold);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: rgba(255,255,255,0.38);
+    }
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      border: none;
+      transition: all var(--t);
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--c-teal);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #0c8082;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(10,147,150,0.38);
+    }
+    .btn-outline {
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      border: 1.5px solid rgba(255,255,255,0.22);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border-color: rgba(255,255,255,0.48);
+    }
+
+    /* Home focus cards */
+    .home-focus {
+      background: var(--c-white);
+      padding: 72px 0;
+    }
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .focus-card {
+      background: var(--c-cream);
+      border-radius: var(--radius);
+      padding: 32px;
+      border-left: 4px solid var(--c-teal);
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .focus-card:nth-child(2) { border-left-color: var(--c-ocean); }
+    .focus-card:nth-child(3) { border-left-color: var(--c-gold); }
+    .focus-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .focus-icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .focus-card h3 {
+      font-family: var(--f-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--c-navy);
+      margin-bottom: 10px;
+    }
+    .focus-card p { font-size: 0.88rem; color: var(--c-text-mid); line-height: 1.68; }
+
+    /* =============================================
+       RESEARCH
+    ============================================= */
+    #research { background: var(--c-cream); }
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      padding-bottom: 96px;
+    }
+    .research-card {
+      background: var(--c-white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .research-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .research-card-img {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* FIGURE: Replace .research-card-img content with <img src="images/research-X.jpg" alt="..." style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"> */
+    .research-card-img i { font-size: 2.6rem; opacity: 0.45; }
+    .research-card-img span {
+      font-family: var(--f-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.45;
+    }
+    .img-repro   { background: linear-gradient(135deg, rgba(10,147,150,.14), rgba(10,147,150,.04)); color: var(--c-teal); }
+    .img-climate { background: linear-gradient(135deg, rgba(29,111,164,.14), rgba(29,111,164,.04)); color: var(--c-ocean); }
+    .img-stress  { background: linear-gradient(135deg, rgba(231,111,81,.14), rgba(231,111,81,.04)); color: var(--c-coral); }
+    .img-pop     { background: linear-gradient(135deg, rgba(233,196,106,.2), rgba(233,196,106,.06)); color: #8a6d00; }
+    .img-dive    { background: linear-gradient(135deg, rgba(12,31,53,.12), rgba(12,31,53,.04)); color: var(--c-navy-mid); }
+    .img-art     { background: linear-gradient(135deg, rgba(138,43,226,.12), rgba(138,43,226,.04)); color: #6b3fa0; }
+
+    .research-card-body { padding: 26px 28px 28px; }
+    .research-card-tag {
+      display: inline-block;
+      font-family: var(--f-mono);
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      padding: 4px 11px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+    .tag-repro   { background: rgba(10,147,150,.1);  color: var(--c-teal); }
+    .tag-climate { background: rgba(29,111,164,.1);  color: var(--c-ocean); }
+    .tag-stress  { background: rgba(231,111,81,.1);  color: var(--c-coral); }
+    .tag-pop     { background: rgba(233,196,106,.15);color: #8a6d00; }
+    .tag-dive    { background: rgba(12,31,53,.08);   color: var(--c-navy-mid); }
+    .tag-art     { background: rgba(138,43,226,.08); color: #6b3fa0; }
+
+    .research-card h3 {
+      font-family: var(--f-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--c-navy);
+      margin-bottom: 10px;
+      line-height: 1.32;
+    }
+    .research-card p { font-size: 0.875rem; color: var(--c-text-mid); line-height: 1.72; }
+    .research-card-links { margin-top: 18px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .pub-chip {
+      font-size: 0.7rem;
+      color: var(--c-teal);
+      border: 1px solid var(--c-teal);
+      border-radius: 100px;
+      padding: 3px 11px;
+      transition: all var(--t);
+    }
+    .pub-chip:hover { background: var(--c-teal); color: #fff; }
+
+    /* =============================================
+       OUTREACH
+    ============================================= */
+    #outreach { background: var(--c-white); }
+    .outreach-intro {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 28px 64px;
+    }
+    .outreach-intro p {
+      font-size: 1.04rem;
+      color: var(--c-text-mid);
+      line-height: 1.88;
+      margin-bottom: 22px;
+    }
+    .outreach-intro p.lead {
+      font-family: var(--f-display);
+      font-size: 1.22rem;
+      color: var(--c-text);
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .outreach-feature {
+      background: var(--c-navy);
+      padding: 72px 0;
+      margin-bottom: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .outreach-feature::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 80% 50%, rgba(10,147,150,.2) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(29,111,164,.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .outreach-feature-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      position: relative;
+    }
+    .outreach-feature-img {
+      width: 100%;
+      height: 380px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 14px;
+      overflow: hidden;
+    }
+    /* PHOTO: Replace with <img src="images/outreach-exhibit.jpg" alt="Aesthetics of Resilience" style="width:100%;height:100%;object-fit:cover;"> */
+    .outreach-feature-img i { font-size: 3rem; color: rgba(255,255,255,.25); }
+    .outreach-feature-img span {
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      color: rgba(255,255,255,.25);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .feature-label {
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--c-teal-light);
+      margin-bottom: 18px;
+    }
+    .feature-title {
+      font-family: var(--f-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.22;
+      margin-bottom: 22px;
+    }
+    .feature-body { color: rgba(255,255,255,.7); line-height: 1.82; margin-bottom: 18px; font-size: 0.97rem; }
+    .feature-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--c-teal-light);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: gap var(--t), color var(--t);
+    }
+    .feature-link:hover { gap: 14px; color: #fff; }
+
+    .outreach-media { padding: 0 0 72px; }
+    .sub-title {
+      font-family: var(--f-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--c-navy);
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .media-item {
+      background: var(--c-cream);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      border: 1px solid var(--c-border);
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .media-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+    .media-outlet {
+      font-family: var(--f-mono);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--c-teal);
+      margin-bottom: 8px;
+    }
+    .media-headline { font-size: 0.82rem; color: var(--c-text); line-height: 1.52; font-weight: 500; }
+    .media-year { font-size: 0.7rem; color: var(--c-text-light); margin-top: 10px; font-family: var(--f-mono); }
+
+    .outreach-initiatives { background: var(--c-cream); padding: 72px 0; }
+    .initiatives-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 44px;
+    }
+    .initiative-card {
+      background: var(--c-white);
+      border-radius: var(--radius);
+      padding: 32px;
+      border-top: 3px solid var(--c-teal);
+    }
+    .initiative-card:nth-child(2) { border-top-color: var(--c-gold); }
+    .initiative-card:nth-child(3) { border-top-color: var(--c-ocean); }
+    .initiative-icon { font-size: 1.8rem; margin-bottom: 16px; }
+    .initiative-card h4 {
+      font-family: var(--f-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--c-navy);
+      margin-bottom: 10px;
+    }
+    .initiative-card p { font-size: 0.875rem; color: var(--c-text-mid); line-height: 1.68; }
+
+    /* =============================================
+       PUBLICATIONS
+    ============================================= */
+    #publications { background: var(--c-cream); }
+    .pub-stats-bar {
+      display: flex;
+      gap: 0;
+      justify-content: center;
+      align-items: center;
+      background: var(--c-navy);
+      padding: 40px 0;
+    }
+    .pub-stat { text-align: center; padding: 0 40px; }
+    .pub-stat-value {
+      font-family: var(--f-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--c-gold);
+      line-height: 1;
+    }
+    .pub-stat-value.small { font-size: 1.1rem; color: var(--c-teal-light); letter-spacing: 0.04em; }
+    .pub-stat-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,.45);
+      margin-top: 6px;
+    }
+    .pub-divider { width: 1px; height: 52px; background: rgba(255,255,255,.1); flex-shrink: 0; }
+    .pub-filters {
+      display: flex;
+      gap: 8px;
+      padding: 36px 0 4px;
+      flex-wrap: wrap;
+    }
+    .pub-filter-btn {
+      padding: 8px 22px;
+      border-radius: 100px;
+      border: 1.5px solid var(--c-border);
+      background: var(--c-white);
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--c-text-mid);
+      cursor: pointer;
+      transition: all var(--t);
+      font-family: var(--f-body);
+    }
+    .pub-filter-btn:hover { border-color: var(--c-teal); color: var(--c-teal); }
+    .pub-filter-btn.active { background: var(--c-teal); border-color: var(--c-teal); color: #fff; }
+
+    .pub-section-label {
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--c-text-light);
+      padding: 36px 0 14px;
+      border-bottom: 1px solid var(--c-border);
+    }
+    .pub-list { list-style: none; }
+    .pub-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--c-border);
+      transition: all var(--t);
+    }
+    .pub-item:hover {
+      background: rgba(255,255,255,0.7);
+      margin: 0 -12px;
+      padding: 18px 12px;
+      border-radius: var(--radius-sm);
+      border-bottom-color: transparent;
+    }
+    .pub-number {
+      font-family: var(--f-mono);
+      font-size: 0.78rem;
+      color: var(--c-text-light);
+      padding-top: 3px;
+      text-align: right;
+    }
+    .pub-authors { font-size: 0.875rem; color: var(--c-text-mid); margin-bottom: 4px; line-height: 1.5; }
+    .pub-authors strong { color: var(--c-navy); font-weight: 600; }
+    .pub-title-text { font-size: 0.95rem; font-weight: 500; color: var(--c-text); margin-bottom: 5px; line-height: 1.5; }
+    .pub-journal { font-size: 0.82rem; color: var(--c-text-light); font-style: italic; margin-bottom: 8px; }
+    .pub-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .pub-year-badge {
+      font-family: var(--f-mono);
+      font-size: 0.65rem;
+      background: var(--c-border);
+      color: var(--c-text-mid);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .pub-doi {
+      font-size: 0.76rem;
+      color: var(--c-teal);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .badge-first {
+      font-size: 0.64rem;
+      background: rgba(10,147,150,.1);
+      color: var(--c-teal);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-family: var(--f-mono);
+      letter-spacing: 0.06em;
+    }
+    .badge-review {
+      font-size: 0.64rem;
+      background: rgba(233,196,106,.15);
+      color: #8a6d00;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-family: var(--f-mono);
+      letter-spacing: 0.06em;
+    }
+
+    /* =============================================
+       PHOTOS
+    ============================================= */
+    #photos { background: var(--c-navy); }
+    #photos .section-header { padding-top: 72px; }
+    #photos .section-eyebrow { color: var(--c-teal-light); }
+    #photos .section-title { color: #fff; }
+    #photos .section-subtitle { color: rgba(255,255,255,.58); }
+    #photos .section-rule { background: linear-gradient(90deg, var(--c-teal-light), var(--c-gold)); }
+
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding: 0 28px 96px;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    /* Wide slots */
+    .photo-slot-wide { grid-column: span 2; }
+
+    .photo-slot, .photo-slot-wide {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform var(--t), box-shadow var(--t);
+      cursor: default;
+    }
+    .photo-slot-wide { aspect-ratio: 16/7; }
+    .photo-slot:hover, .photo-slot-wide:hover {
+      transform: scale(1.015);
+      box-shadow: 0 16px 48px rgba(0,0,0,.4);
+    }
+    .photo-slot img, .photo-slot-wide img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .photo-ph i { font-size: 2rem; color: rgba(255,255,255,.18); display: block; margin-bottom: 8px; }
+    .photo-ph span {
+      font-family: var(--f-mono);
+      font-size: 0.62rem;
+      color: rgba(255,255,255,.18);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0 16px;
+    }
+    .photo-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.72));
+      color: rgba(255,255,255,.88);
+      font-size: 0.78rem;
+      padding: 28px 16px 12px;
+      opacity: 0;
+      transition: opacity var(--t);
+    }
+    .photo-slot:hover .photo-caption,
+    .photo-slot-wide:hover .photo-caption { opacity: 1; }
+
+    .photo-upload-note {
+      text-align: center;
+      padding: 16px 28px 40px;
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      color: rgba(255,255,255,.2);
+      letter-spacing: 0.07em;
+    }
+
+    /* =============================================
+       CONTACT
+    ============================================= */
+    #contact {
+      background: var(--c-white);
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 72px 28px;
+    }
+    .contact-card {
+      background: var(--c-cream);
+      border-radius: var(--radius);
+      padding: 60px 56px;
+      max-width: 680px;
+      width: 100%;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .contact-avatar {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--c-teal), var(--c-ocean));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--f-display);
+      font-size: 1.9rem;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .contact-card h2 {
+      font-family: var(--f-display);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--c-navy);
+      margin-bottom: 8px;
+    }
+    .contact-role { color: var(--c-text-mid); margin-bottom: 4px; }
+    .contact-inst { font-size: 0.875rem; color: var(--c-teal); font-weight: 500; margin-bottom: 36px; }
+    .contact-email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--c-navy);
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.97rem;
+      margin-bottom: 0;
+      transition: all var(--t);
+    }
+    .contact-email-link:hover {
+      background: var(--c-teal);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .contact-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--c-border);
+      margin: 36px 0;
+    }
+    .social-label {
+      font-family: var(--f-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--c-text-light);
+      margin-bottom: 20px;
+    }
+    .social-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--c-white);
+      border: 1.5px solid var(--c-border);
+      border-radius: var(--radius-sm);
+      color: var(--c-text-mid);
+      font-size: 0.84rem;
+      font-weight: 500;
+      transition: all var(--t);
+    }
+    .social-link i { font-size: 1rem; }
+    .social-link:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .social-link.twitter:hover   { border-color: #1da1f2; color: #1da1f2; }
+    .social-link.instagram:hover { border-color: #e1306c; color: #e1306c; }
+    .social-link.scholar:hover   { border-color: #4285f4; color: #4285f4; }
+    .social-link.orcid:hover     { border-color: #a6ce39; color: #a6ce39; }
+    .contact-address {
+      margin-top: 32px;
+      font-size: 0.82rem;
+      color: var(--c-text-light);
+      line-height: 1.72;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .site-footer {
+      background: var(--c-navy);
+      color: rgba(255,255,255,.35);
+      text-align: center;
+      padding: 28px;
+      font-size: 0.76rem;
+      font-family: var(--f-mono);
+      letter-spacing: 0.04em;
+    }
+    .site-footer a { color: rgba(255,255,255,.35); }
+    .site-footer a:hover { color: var(--c-teal-light); }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 1024px) {
+      .research-grid { grid-template-columns: repeat(2, 1fr); }
+      .media-grid { grid-template-columns: repeat(2, 1fr); }
+      .pub-stat { padding: 0 24px; }
+    }
+    @media (max-width: 768px) {
+      :root { --nav-h: 64px; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: var(--c-navy); padding: 16px; gap: 4px; border-bottom: 2px solid var(--c-teal); }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .home-hero { grid-template-columns: 1fr; }
+      .hero-visual { padding: 48px 24px 24px; }
+      .profile-photo-wrap { width: 180px; height: 180px; }
+      .hero-content { padding: 24px; }
+      .focus-grid { grid-template-columns: 1fr; }
+      .research-grid { grid-template-columns: 1fr; }
+      .outreach-feature-inner { grid-template-columns: 1fr; gap: 36px; }
+      .media-grid { grid-template-columns: 1fr 1fr; }
+      .initiatives-grid { grid-template-columns: 1fr; }
+      .photo-gallery { grid-template-columns: repeat(2, 1fr); }
+      .photo-slot-wide { grid-column: span 2; aspect-ratio: 16/9; }
+      .contact-card { padding: 36px 24px; }
+      .pub-stats-bar { flex-wrap: wrap; gap: 16px 0; padding: 32px 16px; }
+      .pub-divider { display: none; }
+      .pub-stat { padding: 0 20px; }
+    }
+    @media (max-width: 480px) {
+      .hero-stats { gap: 20px; }
+      .photo-gallery { grid-template-columns: 1fr; }
+      .photo-slot-wide { grid-column: span 1; aspect-ratio: 4/3; }
+      .social-links { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-brand" onclick="showSection('home')">
+      Logan J. Pallin
+      <span>Marine Ecophysiology</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
+      <li><a href="#" class="nav-link" data-section="research">Research</a></li>
+      <li><a href="#" class="nav-link" data-section="outreach">Outreach</a></li>
+      <li><a href="#" class="nav-link" data-section="publications">Publications</a></li>
+      <li><a href="#" class="nav-link" data-section="photos">Fun &amp; Photos</a></li>
+      <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HOME
+============================================================ -->
+<section class="page-section active" id="home">
+
+  <div class="home-hero">
+
+    <!-- Left: Photo + Specialty Tag -->
+    <div class="hero-visual">
+      <div class="profile-photo-wrap">
+        <!--
+          ★ PHOTO INSTRUCTIONS ★
+          To add your headshot, replace the <div class="profile-placeholder">
+          block below with:
+          <img class="profile-photo" src="images/logan-pallin.jpg" alt="Logan J. Pallin">
+          Save your photo as images/logan-pallin.jpg (square, min 600×600px recommended)
+        -->
+        <div class="profile-placeholder">
+          <span>LJP</span>
+        </div>
+      </div>
+      <div class="hero-specialty-tag">Marine Vertebrate Ecophysiology</div>
+    </div>
+
+    <!-- Right: Name, Title, Bio, Stats -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">Postdoctoral Researcher · UC Santa Cruz</div>
+      <h1 class="hero-name">Logan J.<br>Pallin</h1>
+      <div class="hero-title">Department of Ocean Sciences &amp;<br>Institute of the Arts and Sciences</div>
+      <div class="hero-institution">University of California, Santa Cruz</div>
+      <p class="hero-bio">
+        I study marine ecology, wildlife biology, physiology, and demography —
+        tracing how populations of marine predators respond to natural and
+        human-driven change. Using blubber biomarkers, endocrinology, and
+        long-term field data, I track the health and recovery of baleen whale
+        populations across the Southern Ocean and Monterey Bay as their world
+        rapidly transforms.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-value">611</div>
+          <div class="stat-label">Citations</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">19</div>
+          <div class="stat-label">Publications</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">12</div>
+          <div class="stat-label">h-index</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">13+</div>
+          <div class="stat-label">Yrs Fieldwork</div>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary" onclick="showSection('research');return false;">
+          <i class="fas fa-microscope"></i> View Research
+        </a>
+        <a href="#" class="btn btn-outline" onclick="showSection('publications');return false;">
+          <i class="fas fa-scroll"></i> Publications
+        </a>
+        <a href="mailto:lpallin@ucsc.edu" class="btn btn-outline">
+          <i class="fas fa-envelope"></i> Get in Touch
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three pillars strip -->
+  <div class="home-focus">
+    <div class="container">
+      <div class="section-eyebrow" style="text-align:center">What I study</div>
+      <div class="section-title" style="text-align:center; font-size:1.8rem; margin-bottom:0;">Three pillars of my science</div>
+      <div class="focus-grid">
+        <div class="focus-card">
+          <div class="focus-icon">🐋</div>
+          <h3>Physiology &amp; Demography</h3>
+          <p>Using blubber hormone assays to reveal reproductive status, stress levels, and population health in large whales — non-invasively and at scale across the Southern Ocean.</p>
+        </div>
+        <div class="focus-card">
+          <div class="focus-icon">🌊</div>
+          <h3>Climate &amp; Ecosystem Change</h3>
+          <p>Tracing how rapid change in Antarctic sea ice and krill availability cascades through the food web, affecting baleen whale body condition, reproduction, and survival.</p>
+        </div>
+        <div class="focus-card">
+          <div class="focus-icon">🎨</div>
+          <h3>Art, Science &amp; Society</h3>
+          <p>Bridging research and the public through museum exhibitions, major media, and K-12 programs that make ocean science visible, personal, and urgent.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============================================================
+     RESEARCH
+============================================================ -->
+<section class="page-section" id="research">
+
+  <div class="section-header">
+    <div class="section-eyebrow">Science &amp; Discovery</div>
+    <h2 class="section-title">Active Research Areas</h2>
+    <p class="section-subtitle">Integrating physiology, ecology, and conservation biology to understand how marine mammals navigate a changing planet.</p>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="container">
+    <div class="research-grid">
+
+      <!-- 1. Reproductive Physiology -->
+      <div class="research-card">
+        <div class="research-card-img img-repro">
+          <!--
+            ★ FIGURE: Replace this block with a publication figure.
+            Example: <img src="images/research-repro.jpg" alt="Blubber endocrinology" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          -->
+          <i class="fas fa-dna" style="color:var(--c-teal);"></i>
+          <span>Add publication figure</span>
+        </div>
+        <div class="research-card-body">
+          <span class="research-card-tag tag-repro">Reproductive Physiology</span>
+          <h3>Blubber Endocrinology &amp; Reproductive Status</h3>
+          <p>I developed and validated a non-invasive blubber-based pregnancy test for humpback whales — enabling detection of reproductive status from biopsy samples without ever needing to observe a calf. Progesterone, cortisol, and thyroid hormones extracted from blubber reveal the reproductive dynamics of recovering whale populations across multiple ocean basins.</p>
+          <div class="research-card-links">
+            <a href="https://doi.org/10.1093/conphys/coy031" class="pub-chip" target="_blank">Pallin et al. 2018</a>
+            <a href="https://doi.org/10.1093/conphys/coae038" class="pub-chip" target="_blank">Pallin et al. 2024</a>
+            <a href="https://doi.org/10.1098/rsos.180017" class="pub-chip" target="_blank">Pallin et al. 2018b</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Climate Change -->
+      <div class="research-card">
+        <div class="research-card-img img-climate">
+          <!--
+            ★ FIGURE: Replace with a figure from Pallin et al. 2023 (Global Change Biology) or similar.
+            Example: <img src="images/research-climate.jpg" alt="Krill and whale health">
+          -->
+          <i class="fas fa-temperature-high" style="color:var(--c-ocean);"></i>
+          <span>Add publication figure</span>
+        </div>
+        <div class="research-card-body">
+          <span class="research-card-tag tag-climate">Climate &amp; Ecosystem</span>
+          <h3>Krill Availability &amp; Antarctic Baleen Whale Health</h3>
+          <p>In the rapidly warming Antarctic Peninsula, shifts in sea ice alter krill abundance — with direct consequences for the whales that depend on them. My research links environmental variability, foraging ecology, and body condition to reveal when "surplus" krill is no longer sufficient to sustain whale population growth and reproductive success.</p>
+          <div class="research-card-links">
+            <a href="https://doi.org/10.1111/gcb.16559" class="pub-chip" target="_blank">Pallin et al. 2023</a>
+            <a href="https://doi.org/10.3389/fmars.2022.1036860" class="pub-chip" target="_blank">Bierlich et al. 2022</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Stress Physiology -->
+      <div class="research-card">
+        <div class="research-card-img img-stress">
+          <!--
+            ★ FIGURE: Replace with cortisol figure from Pallin et al. 2022 (Scientific Reports).
+          -->
+          <i class="fas fa-wave-square" style="color:var(--c-coral);"></i>
+          <span>Add publication figure</span>
+        </div>
+        <div class="research-card-body">
+          <span class="research-card-tag tag-stress">Stress Physiology</span>
+          <h3>Anthropogenic Stressors &amp; Glucocorticoids</h3>
+          <p>Blubber cortisol integrates chronic stress over weeks to months — a powerful window into the sub-lethal impacts of shipping, noise, and climate. I leveraged the COVID-19 "anthropause" as a natural experiment, documenting how sudden reductions in ocean noise and vessel traffic measurably reduced whale stress hormones in Monterey Bay and along the Antarctic Peninsula.</p>
+          <div class="research-card-links">
+            <a href="https://doi.org/10.1038/s41598-022-24704-6" class="pub-chip" target="_blank">Pallin et al. 2022</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Population Connectivity -->
+      <div class="research-card">
+        <div class="research-card-img img-pop">
+          <!--
+            ★ FIGURE: Replace with demography or connectivity figure.
+          -->
+          <i class="fas fa-globe-americas" style="color:#8a6d00;"></i>
+          <span>Add publication figure</span>
+        </div>
+        <div class="research-card-body">
+          <span class="research-card-tag tag-pop">Population Ecology</span>
+          <h3>Demography, Connectivity &amp; Photo-ID</h3>
+          <p>Combining genetics, photo-identification, and biomarkers across 13+ years and thousands of animals, I reconstruct population structure and migratory connectivity of humpback and Antarctic minke whales spanning multiple ocean basins. My demographic work revealed the remarkable recovery of ice-obligate mysticetes and quantified how migratory fidelity shapes genetic structure over four decades.</p>
+          <div class="research-card-links">
+            <a href="http://doi.org/10.1098/rsos.220724" class="pub-chip" target="_blank">Pallin et al. 2022</a>
+            <a href="https://doi.org/10.1038/s41598-021-02612-5" class="pub-chip" target="_blank">Marcondes et al. 2021</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Conservation & Adaptive Management -->
+      <div class="research-card">
+        <div class="research-card-img img-dive">
+          <!--
+            ★ FIGURE: Replace with a figure from the IWC report or CCAMLR framework diagram.
+            Example: <img src="images/research-conservation.jpg" alt="Krill fishery management framework">
+          -->
+          <i class="fas fa-fish" style="color:var(--c-navy-mid);"></i>
+          <span>Add figure</span>
+        </div>
+        <div class="research-card-body">
+          <span class="research-card-tag tag-dive">Conservation Science</span>
+          <h3>Whales, Krill Fisheries &amp; Adaptive Management</h3>
+          <p>Baleen whales are the largest krill consumers in the Antarctic ecosystem — yet they are entirely absent from CCAMLR's Ecosystem Monitoring Program (CEMP). As recovering whale populations re-occupy the Southern Ocean and the commercial krill fishery proposes expanding catch limits by nearly 4×, the collision course between conservation and industry is accelerating. A single fishing vessel can harvest up to 1,000 metric tons of krill per day — roughly the foraging equivalent of 288 humpback whales. My ongoing work aims to establish the first whale-focused CEMP monitoring site, delivering pregnancy rate data and real-time physiological indicators directly into CCAMLR's management decision cycle. The goal is straightforward: ensure that krill fishery management accounts for its largest and least-counted predator — and that the management keeps pace with both ecosystem change and population recovery.</p>
+          <div class="research-card-links">
+            <a href="https://orcid.org/0000-0001-8024-9663" class="pub-chip" target="_blank">Work in Progress</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Art-Science -->
+      <div class="research-card">
+        <div class="research-card-img img-art">
+          <!--
+            ★ FIGURE: Replace with a photo from the IAS exhibition.
+            Example: <img src="images/research-ias.jpg" alt="Aesthetics of Resilience">
+          -->
+          <i class="fas fa-palette" style="color:#6b3fa0;"></i>
+          <span>Add exhibit photo</span>
+        </div>
+        <div class="research-card-body">
+          <span class="research-card-tag tag-art">Art–Science</span>
+          <h3>Art, Science &amp; Climate Communication</h3>
+          <p>As a Contributing Scientist at UCSC's Institute of the Arts and Sciences, I collaborate with artists and curators to translate long-term climate datasets into immersive public experiences. The <em>Aesthetics of Resilience</em> exhibition and the <em>Weather and the Whale</em> University of Minnesota Press catalog demonstrate what's possible when rigorous empirical work and creative practice share the same space.</p>
+          <div class="research-card-links">
+            <a href="https://ias.ucsc.edu/art-science/aesthetics-resilience/" class="pub-chip" target="_blank">IAS Exhibition</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /research-grid -->
+  </div>
+
+</section>
+
+<!-- ============================================================
+     OUTREACH
+============================================================ -->
+<section class="page-section" id="outreach">
+
+  <div class="section-header">
+    <div class="section-eyebrow">Beyond the Lab</div>
+    <h2 class="section-title">Science for Everyone</h2>
+    <p class="section-subtitle">The most urgent findings in ocean science are too important to remain behind paywalls. I'm committed to bringing marine biology into classrooms, galleries, and the public square.</p>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="outreach-intro container">
+    <p class="lead">
+      "Science is a way of thinking much more than it is a body of knowledge." 
+      But knowledge locked away in journals doesn't change the world — 
+      connection does.
+    </p>
+    <p>
+      Whales are among the most charismatic animals on Earth, yet most people have never 
+      encountered the scientific evidence that shapes decisions about their protection. 
+      From the legacies of commercial hunting to the cascading effects of a warming 
+      Southern Ocean, the stories embedded in blubber and bones are profound — 
+      and urgently public. I believe scientists have a responsibility to meet people 
+      where they are: in schools, in museums, in the news, and in conversation.
+    </p>
+    <p>
+      Over more than a decade, I have partnered with artists, educators, journalists, 
+      NGOs, and policymakers to communicate marine science in ways that are honest, 
+      accessible, and lasting. The work below represents those efforts — from the 
+      front pages of the New York Times to elementary school classrooms in Minnesota.
+    </p>
+  </div>
+
+  <!-- Featured Project: Aesthetics of Resilience -->
+  <div class="outreach-feature">
+    <div class="container">
+      <div class="outreach-feature-inner">
+        <div class="outreach-feature-img">
+          <!--
+            ★ PHOTO: Replace with a photo from the IAS exhibition.
+            Example:
+            <img src="images/outreach-ias.jpg" alt="An Aesthetics of Resilience exhibit" style="width:100%;height:100%;object-fit:cover;">
+          -->
+          <i class="fas fa-image"></i>
+          <span>Add IAS exhibition photo here</span>
+        </div>
+        <div>
+          <div class="feature-label">Featured Project · IAS, UC Santa Cruz · 2025–2026</div>
+          <h3 class="feature-title">An Aesthetics of Resilience:<br><em>Weather and the Whale</em></h3>
+          <p class="feature-body">
+            What does climate change feel like? At UCSC's Institute of the Arts and Sciences, 
+            a landmark collaboration between scientists, artists, and curators brought together 
+            long-term data on whale physiology and behavior with immersive artistic installation — 
+            making the invisible rhythms of ocean biology visible, emotionally resonant, and 
+            urgent for general audiences.
+          </p>
+          <p class="feature-body">
+            As a Contributing Scientist, I helped translate years of field research into an 
+            exhibition language accessible to anyone. The project culminated in 
+            <em>Weather and the Whale</em>, an exhibition catalog published by 
+            University of Minnesota Press — documenting the science, the art, and 
+            the irreplaceable conversations that happen when both inhabit the same room.
+          </p>
+          <a href="https://ias.ucsc.edu/exhibits/aesthetics-of-resilience/weather-the-whale/" class="feature-link" target="_blank">
+            Visit the IAS project page <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Media -->
+  <div class="outreach-media container">
+    <div class="sub-title">In the News</div>
+    <div class="media-grid">
+      <div class="media-item">
+        <div class="media-outlet">The New York Times</div>
+        <div class="media-headline">Humpback Whale Baby Boom Near Antarctica</div>
+        <div class="media-year">2018</div>
+      </div>
+      <div class="media-item">
+        <div class="media-outlet">Nature Magazine</div>
+        <div class="media-headline">How to tell when there's a baby whale on the way</div>
+        <div class="media-year">2018</div>
+      </div>
+      <div class="media-item">
+        <div class="media-outlet">Smithsonian Magazine</div>
+        <div class="media-headline">Antarctica's Waters May Soon Harbor a Boom of Baby Humpback Whales</div>
+        <div class="media-year">2018</div>
+      </div>
+      <div class="media-item">
+        <div class="media-outlet">The Christian Science Monitor</div>
+        <div class="media-headline">How humpback whales made a global comeback</div>
+        <div class="media-year">2018</div>
+      </div>
+      <div class="media-item">
+        <div class="media-outlet">ABC News (Live)</div>
+        <div class="media-headline">Scientists are 'racing against the clock' to collect crucial data on life in Antarctica</div>
+        <div class="media-year">2019</div>
+      </div>
+      <div class="media-item">
+        <div class="media-outlet">World Wide Fund for Nature</div>
+        <div class="media-headline">The next generation of Antarctic scientists &amp; Whales' frozen lifeline</div>
+        <div class="media-year">2019, 2025</div>
+      </div>
+      <div class="media-item">
+        <div class="media-outlet">The Associated Press</div>
+        <div class="media-headline">Antarctic Krill Fishing: surging demand raising concerns over Antarctica's future</div>
+        <div class="media-year">2023</div>
+      </div>
+      <div class="media-item">
+        <div class="media-outlet">The Daily Maverick</div>
+        <div class="media-headline">The Krill Catastrophe: a crucial Antarctic creature doomed by geopolitics and overfishing</div>
+        <div class="media-year">2025</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Education Initiatives -->
+  <div class="outreach-initiatives">
+    <div class="container">
+      <div class="sub-title" style="text-align:center;">Education &amp; Community</div>
+      <div class="initiatives-grid">
+        <div class="initiative-card">
+          <div class="initiative-icon">🏫</div>
+          <h4>K-12 Science Education</h4>
+          <p>Through Polar-ICE and Data Nuggets (Rutgers University), I created curriculum connecting real Antarctic field datasets to K-12 classrooms across the country. I've also served as lead judge and research mentor at the Santa Cruz County K-12 STEAM Expo, and co-chaired a regional science fair in Minnesota.</p>
+        </div>
+        <div class="initiative-card">
+          <div class="initiative-icon">🌊</div>
+          <h4>California Ocean Alliance</h4>
+          <p>As a contributing researcher and mentor with COA, I help develop the Marine Mammal Scientist in Training (MMST) program for local high school students — giving the next generation of ocean scientists their first hands-on research experience aboard real field vessels in the Monterey Bay.</p>
+        </div>
+        <div class="initiative-card">
+          <div class="initiative-icon">🎓</div>
+          <h4>Undergraduate Mentoring</h4>
+          <p>I have mentored 14+ undergraduate researchers at UCSC, Duke, and partner institutions, with a strong commitment to supporting students from underrepresented communities. Several mentees are now pursuing graduate degrees in marine science and conservation biology.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============================================================
+     PUBLICATIONS
+============================================================ -->
+<section class="page-section" id="publications">
+
+  <!-- Stats Bar -->
+  <div class="pub-stats-bar" style="margin-top:var(--nav-h);">
+    <div class="pub-stat">
+      <div class="pub-stat-value">611</div>
+      <div class="pub-stat-label">Citations</div>
+    </div>
+    <div class="pub-divider"></div>
+    <div class="pub-stat">
+      <div class="pub-stat-value">12</div>
+      <div class="pub-stat-label">h-index</div>
+    </div>
+    <div class="pub-divider"></div>
+    <div class="pub-stat">
+      <div class="pub-stat-value">19</div>
+      <div class="pub-stat-label">Peer-Reviewed</div>
+    </div>
+    <div class="pub-divider"></div>
+    <div class="pub-stat">
+      <div class="pub-stat-value">11</div>
+      <div class="pub-stat-label">In Review / Prep</div>
+    </div>
+    <div class="pub-divider"></div>
+    <div class="pub-stat">
+      <a href="https://orcid.org/0000-0001-8024-9663" target="_blank" style="color:inherit;text-decoration:none;">
+        <div class="pub-stat-value small">ORCID</div>
+        <div class="pub-stat-label">0000-0001-8024-9663</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="pub-filters">
+      <button class="pub-filter-btn active" onclick="filterPubs(this,'all')">All</button>
+      <button class="pub-filter-btn" onclick="filterPubs(this,'published')">Published</button>
+      <button class="pub-filter-btn" onclick="filterPubs(this,'review')">In Review / Prep</button>
+      <button class="pub-filter-btn" onclick="filterPubs(this,'other')">Theses &amp; Reports</button>
+    </div>
+
+    <!-- IN REVIEW -->
+    <div class="pub-group" data-group="review">
+      <div class="pub-section-label">Manuscripts Submitted, In Review, or In Preparation</div>
+      <ul class="pub-list">
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors"><strong>Pallin, L.J.</strong> et al.</div>
+            <div class="pub-title-text">Effects of the COVID-19 Anthropause on humpback whale blubber cortisol levels in the Monterey Bay National Marine Sanctuary.</div>
+            <div class="pub-journal">Royal Society Open Science</div>
+            <div class="pub-meta"><span class="badge-review">In Review</span><span class="badge-first">First Author</span></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors"><strong>Pallin, L.J.</strong> et al.</div>
+            <div class="pub-title-text">Near Real-Time Monitoring of Southern Hemisphere Whale Population Health and Connectivity: Integrating Physiology, Movement Ecology, and Body Condition to Inform Ecosystem-Based Management.</div>
+            <div class="pub-journal">Science: Policy Forum</div>
+            <div class="pub-meta"><span class="badge-review">In Preparation</span><span class="badge-first">First Author</span></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors"><strong>Pallin, L.J.</strong> et al.</div>
+            <div class="pub-title-text">Antarctic Peninsula Marine Protected Area Proposal — Concerns and recommendations to strengthen its effectiveness for baleen whales.</div>
+            <div class="pub-journal">Science: Policy Forum</div>
+            <div class="pub-meta"><span class="badge-review">In Preparation</span><span class="badge-first">First Author</span></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors">Brown et al. (incl. <strong>Pallin, L.J.</strong>)</div>
+            <div class="pub-title-text">Built to Dive: Untargeted metabolomics identifies pathways central to diving success in the world's best divers.</div>
+            <div class="pub-journal">The Journal of Physiology</div>
+            <div class="pub-meta"><span class="badge-review">In Revision</span></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors">Beltran, R. et al. (incl. <strong>Pallin, L.J.</strong>)</div>
+            <div class="pub-title-text">Lessons learned from field immobilization of northern elephant seals over two decades.</div>
+            <div class="pub-journal">Scientific Reports</div>
+            <div class="pub-meta"><span class="badge-review">In Revision</span></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors">Ponganis, P. et al. (incl. <strong>Pallin, L.J.</strong>)</div>
+            <div class="pub-title-text">Carboxyhemoglobin, blood oxygen content and depletion of oxygen in sleeping elephant seals.</div>
+            <div class="pub-journal">Journal of Comparative Physiology B</div>
+            <div class="pub-meta"><span class="badge-review">In Revision</span></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors">Kellar et al. (incl. <strong>Pallin, L.J.</strong>)</div>
+            <div class="pub-title-text">Blubber cortisol and sonar: Glucocorticoid responses of common dolphins to controlled simulated MFAS exposure.</div>
+            <div class="pub-journal">Conservation Physiology</div>
+            <div class="pub-meta"><span class="badge-review">In Review</span></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors">Eichenberger et al. (incl. <strong>Pallin, L.J.</strong>)</div>
+            <div class="pub-title-text">Migratory fidelity across four decades shapes genetic structure of humpback whales on feeding grounds of the eastern North Pacific.</div>
+            <div class="pub-journal">Marine Ecology Progress Series</div>
+            <div class="pub-meta"><span class="badge-review">In Review</span></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors">Félix, F. et al. (incl. <strong>Pallin, L.J.</strong>)</div>
+            <div class="pub-title-text">Quantifying the abundance of humpback whale breeding stock G through photo-ID matches across breeding and feeding grounds.</div>
+            <div class="pub-journal">Marine Mammal Science</div>
+            <div class="pub-meta"><span class="badge-review">In Review</span></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors">Allen et al. (incl. <strong>Pallin, L.J.</strong>)</div>
+            <div class="pub-title-text">Bubble-net feeding shows demographic and individual variation in Antarctic humpback whales.</div>
+            <div class="pub-journal">Marine Ecology Progress Series</div>
+            <div class="pub-meta"><span class="badge-review">In Preparation</span></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors">Cole et al. (incl. <strong>Pallin, L.J.</strong>)</div>
+            <div class="pub-title-text">Cetacean abundance and distribution at Palmer Station, Antarctica: patterns and insights from 10 years of survey effort.</div>
+            <div class="pub-journal">Marine Mammal Science</div>
+            <div class="pub-meta"><span class="badge-review">In Preparation</span></div>
+          </div>
+        </li>
+
+      </ul>
+    </div><!-- /review group -->
+
+    <!-- PUBLISHED -->
+    <div class="pub-group" data-group="published">
+      <div class="pub-section-label">Peer-Reviewed Publications · Google Scholar: May 2026</div>
+      <ul class="pub-list">
+
+        <li class="pub-item">
+          <div class="pub-number">19</div>
+          <div class="pub-content">
+            <div class="pub-authors">Monreal, P.J., Savoca, M.S., Babcock-Adams, L. et al. (incl. <strong>Pallin, L.J.</strong>)</div>
+            <div class="pub-title-text">Organic ligands in whale excrement support iron availability and reduce copper toxicity to the surface ocean.</div>
+            <div class="pub-journal">Communications Earth &amp; Environment, 6, 20 (2025)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2025</span><a href="https://doi.org/10.1038/s43247-024-01965-9" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">18</div>
+          <div class="pub-content">
+            <div class="pub-authors">Costa, D.P., Holser, R.R., Keates, T.R., … <strong>Pallin, L.J.</strong>, et al.</div>
+            <div class="pub-title-text">Two decades of three-dimensional movement data from adult female northern elephant seals.</div>
+            <div class="pub-journal">Scientific Data, 11, 1357 (2024)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2024</span><a href="https://doi.org/10.1038/s41597-024-04084-4" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">17</div>
+          <div class="pub-content">
+            <div class="pub-authors">Allen, J.A., Nichols, R.C., <strong>Pallin, L.J.</strong>, Johnston, D.W., Friedlaender, A.S.</div>
+            <div class="pub-title-text">Use and prevalence of novel bubble-net foraging strategy in Western Antarctic humpback whales.</div>
+            <div class="pub-journal">Marine Ecology Progress Series, 743:97–111 (2024)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2024</span><a href="https://doi.org/10.3354/meps14654" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">16</div>
+          <div class="pub-content">
+            <div class="pub-authors"><strong>Pallin, L.J.</strong>, Garrigue, C., Kellar, N.M., Baker, C.S., et al.</div>
+            <div class="pub-title-text">Demographic and physiological signals of reproductive events in humpback whales on a southwest Pacific breeding ground.</div>
+            <div class="pub-journal">Conservation Physiology, Volume 12, Issue 1, coae038 (2024)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2024</span><span class="badge-first">First Author</span><a href="https://doi.org/10.1093/conphys/coae038" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">15</div>
+          <div class="pub-content">
+            <div class="pub-authors">Brown, C.V., McKnight, J.C., Bain, A.R., … <strong>Pallin, L.J.</strong>, … &amp; Ainslie, P.N.</div>
+            <div class="pub-title-text">Selected and shared hematological responses to apnea in elite human free-divers and northern elephant seals (<em>Mirounga angustirostris</em>).</div>
+            <div class="pub-journal">American Journal of Physiology-Regulatory, Integrative and Comparative Physiology (2024)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2024</span><a href="https://doi.org/10.1152/ajpregu.00286.2023" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">14</div>
+          <div class="pub-content">
+            <div class="pub-authors">Fraleigh, D.C., <strong>Pallin, L.J.</strong>, Friedlaender, A.S., Barlow, J., et al.</div>
+            <div class="pub-title-text">The influence of biopsy site and pregnancy on stable isotope ratios in humpback whale skin.</div>
+            <div class="pub-journal">Rapid Communications in Mass Spectrometry: RCM, 38(11), e9746 (2024)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2024</span><a href="https://doi.org/10.1002/rcm.9746" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">13</div>
+          <div class="pub-content">
+            <div class="pub-authors">Kettemer, L.E., Ramm, T., Broms, F., … <strong>Pallin, L.J.</strong>, et al.</div>
+            <div class="pub-title-text">Don't mind if I do: Arctic humpback whales respond to winter foraging opportunities before migration.</div>
+            <div class="pub-journal">Royal Society Open Science, 10(9), 230069 (2023)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2023</span><a href="https://doi.org/10.1098/rsos.230069" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">12</div>
+          <div class="pub-content">
+            <div class="pub-authors">Cimino, M.A., Conroy, J.A., Connors, E., … <strong>Pallin, L.J.</strong>, et al.</div>
+            <div class="pub-title-text">Long-term patterns in ecosystem phenology near Palmer Station, Antarctica, from the perspective of the Adélie penguin.</div>
+            <div class="pub-journal">Ecosphere, 14(2), e4417 (2023)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2023</span><a href="https://doi.org/10.1002/ecs2.4417" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">11</div>
+          <div class="pub-content">
+            <div class="pub-authors"><strong>Pallin, L.J.</strong>, Kellar, N.M., Steel, D., Botero-Acosta, N., et al.</div>
+            <div class="pub-title-text">A surplus no more? Variation in krill availability impacts reproductive rates of Antarctic baleen whales.</div>
+            <div class="pub-journal">Global Change Biology, 29(8), 2108–2121 (2023)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2023</span><span class="badge-first">First Author</span><a href="https://doi.org/10.1111/gcb.16559" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">10</div>
+          <div class="pub-content">
+            <div class="pub-authors"><strong>Pallin, L.J.</strong>, Botero-Acosta, N., Steel, D., et al.</div>
+            <div class="pub-title-text">Variation in blubber cortisol levels in a recovering humpback whale population inhabiting a rapidly changing environment.</div>
+            <div class="pub-journal">Scientific Reports, 12, 20250 (2022)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2022</span><span class="badge-first">First Author</span><a href="https://doi.org/10.1038/s41598-022-24704-6" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">9</div>
+          <div class="pub-content">
+            <div class="pub-authors">Bierlich, K.C., Hewitt, J., Schick, R., <strong>Pallin, L.J.</strong>, Dale, J., Friedlaender, A., … &amp; Johnston, D.W.</div>
+            <div class="pub-title-text">Seasonal gain in body condition of foraging humpback whales along the Western Antarctic Peninsula.</div>
+            <div class="pub-journal">Frontiers in Marine Science, 9, 2363 (2022)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2022</span><a href="https://doi.org/10.3389/fmars.2022.1036860" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">8</div>
+          <div class="pub-content">
+            <div class="pub-authors"><strong>Pallin, L.J.</strong>, Bierlich, K.C., Durban, J., Fearnbach, H., Savenko, O., Baker, C.S., … &amp; Friedlaender, A.</div>
+            <div class="pub-title-text">Demography of an ice-obligate mysticete in a region of rapid environmental change.</div>
+            <div class="pub-journal">Royal Society Open Science, 9, 220724 (2022)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2022</span><span class="badge-first">First Author</span><a href="http://doi.org/10.1098/rsos.220724" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">7</div>
+          <div class="pub-content">
+            <div class="pub-authors">Marcondes, M.C.C., Cheeseman, T., Jackson, J.A., <strong>Pallin, L.J.</strong>, et al.</div>
+            <div class="pub-title-text">The Southern Ocean Exchange: porous boundaries between humpback whale breeding populations in southern polar waters.</div>
+            <div class="pub-journal">Scientific Reports, 11, 23618 (2021)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2021</span><a href="https://doi.org/10.1038/s41598-021-02612-5" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">6</div>
+          <div class="pub-content">
+            <div class="pub-authors">Modest, M., Irvine, L., Andrews-Goff, V., … <strong>Pallin, L.J.</strong>, … Friedlaender, A.</div>
+            <div class="pub-title-text">First description of migratory behavior of humpback whales from an Antarctic feeding ground to a tropical calving ground.</div>
+            <div class="pub-journal">Animal Biotelemetry, 9, 42 (2021)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2021</span><a href="https://doi.org/10.1186/s40317-021-00266-8" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">5</div>
+          <div class="pub-content">
+            <div class="pub-authors">Atkinson, S., …, <strong>Pallin, L.J.</strong>, et al.</div>
+            <div class="pub-title-text">Genetic, Endocrine, and Microbiological Assessments of Blue, Humpback and Killer Whale Health using Unoccupied Aerial Systems.</div>
+            <div class="pub-journal">Wildlife Society Bulletin (2021)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2021</span><a href="https://doi.org/10.1002/wsb.1240" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">4</div>
+          <div class="pub-content">
+            <div class="pub-authors">Caballero, S., Steel, D., <strong>Pallin, L.J.</strong>, …, Friedlaender, A., Baker, C.S.</div>
+            <div class="pub-title-text">Migratory connections among breeding grounds off the Eastern Pacific and feeding areas in the Antarctic Peninsula based on genotype matching.</div>
+            <div class="pub-journal">Bulletin of Marine and Coastal Research, 50 (Supl. Esp.), 31–40 (2021)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2021</span><a href="https://doi.org/10.25268/bimc.invemar.2021.50.SuplEsp.933" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">3</div>
+          <div class="pub-content">
+            <div class="pub-authors"><strong>Pallin, L.J.</strong>, Robbins, J., Kellar, N., Berube, M., Friedlaender, A.</div>
+            <div class="pub-title-text">Validation of a blubber-based endocrine pregnancy test for humpback whales.</div>
+            <div class="pub-journal">Conservation Physiology, 6(1): coy031 (2018)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2018</span><span class="badge-first">First Author</span><a href="https://doi.org/10.1093/conphys/coy031" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">2</div>
+          <div class="pub-content">
+            <div class="pub-authors"><strong>Pallin, L.J.</strong>, Baker, C.S., Steel, D., Kellar, N.M., Robbins, J., Johnston, D.W., Nowacek, D.P., Read, A.J., Friedlaender, A.S.</div>
+            <div class="pub-title-text">High pregnancy rates in humpback whales (<em>Megaptera novaeangliae</em>) around the Western Antarctic Peninsula, evidence of a rapidly growing population.</div>
+            <div class="pub-journal">Royal Society Open Science, 5: 180017 (2018)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2018</span><span class="badge-first">First Author</span><a href="http://dx.doi.org/10.1098/rsos.180017" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">1</div>
+          <div class="pub-content">
+            <div class="pub-authors">Riekkola, L., …, <strong>Pallin, L.J.</strong>, Robbins, J., Steel, D., et al.</div>
+            <div class="pub-title-text">Application of a multi-disciplinary approach to reveal population structure and Southern Ocean feeding grounds of humpback whales.</div>
+            <div class="pub-journal">Ecological Indicators, 89, 455–465 (2018)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2018</span><a href="https://doi.org/10.1016/j.ecolind.2018.02.030" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+          </div>
+        </li>
+
+      </ul>
+    </div><!-- /published group -->
+
+    <!-- OTHER -->
+    <div class="pub-group" data-group="other">
+      <div class="pub-section-label">Theses, Exhibition Catalogs, IWC Reports &amp; Book Chapters</div>
+      <ul class="pub-list">
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors">Nelson, R., Moore, A., &amp; Friedlaender, A. (Eds.); <strong>Pallin, L.J.</strong>, Lew, C., Botero-Acosta, N. (Contributing Scientists)</div>
+            <div class="pub-title-text"><em>Weather and the Whale: A collaborative exploration of the vulnerabilities of marine mammals in the age of climate change.</em> Exhibition Catalog. University of Minnesota Press. ISBN: 9781517921712</div>
+            <div class="pub-journal">University of Minnesota Press (2026)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2026</span></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors"><strong>Pallin, L.J.</strong>, Friedlaender, A., Reisinger, R., Johnson.</div>
+            <div class="pub-title-text">Near Real-Time Monitoring of Southern Hemisphere Whale Population Health and Connectivity. Report to the IWC SC/70/EM/01. Bled, Slovenia.</div>
+            <div class="pub-journal">International Whaling Commission (May 2026)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2026</span></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors"><strong>Pallin, L.J.</strong></div>
+            <div class="pub-title-text">Using tissue biomarkers to understand the demography and recovery of baleen whales in a rapidly changing environment. (Ph.D. Dissertation)</div>
+            <div class="pub-journal">University of California, Santa Cruz (2022)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2022</span><a href="https://www.proquest.com/dissertations-theses/using-tissue-biomarkers-understand-demography/docview/2773880874/se-2" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> ProQuest</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors"><strong>Pallin, L.J.</strong></div>
+            <div class="pub-title-text">Temporal Variation in Humpback Whale (<em>Megaptera novaeangliae</em>) Demographics Along the Western Antarctic Peninsula. (Master's Thesis)</div>
+            <div class="pub-journal">Oregon State University (2017)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2017</span><a href="http://hdl.handle.net/1957/61621" class="pub-doi" target="_blank"><i class="fas fa-external-link-alt"></i> OSU Archive</a></div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-number">—</div>
+          <div class="pub-content">
+            <div class="pub-authors"><strong>Pallin, L.J.</strong>, Adams, E.M., Goyert, H.F., Friedlaender, A.S., Johnston, D.W.</div>
+            <div class="pub-title-text">Density modeling for marine mammals and sea turtles with environmental covariates. In: <em>Wildlife Densities and Habitat Use Across Temporal and Spatial Scales on the Mid-Atlantic Outer Continental Shelf.</em></div>
+            <div class="pub-journal">Biodiversity Research Institute / Dept of Energy EERE (2015)</div>
+            <div class="pub-meta"><span class="pub-year-badge">2015</span></div>
+          </div>
+        </li>
+
+      </ul>
+    </div><!-- /other group -->
+
+    <div style="height:72px;"></div>
+  </div><!-- /container -->
+
+</section>
+
+<!-- ============================================================
+     FUN & PHOTOS
+============================================================ -->
+<section class="page-section" id="photos">
+
+  <div class="section-header container">
+    <div class="section-eyebrow">Life in the Field</div>
+    <h2 class="section-title">Fun &amp; Photos</h2>
+    <p class="section-subtitle">From Antarctic ice floes to the kelp forests of Monterey Bay — field science takes you to places most people only see in documentaries.</p>
+    <div class="section-rule"></div>
+  </div>
+
+  <!--
+    ★★★ HOW TO ADD PHOTOS ★★★
+    1. Create an "images/" folder next to index.html
+    2. Add your photos (JPG or PNG, aim for max 2000px wide for web)
+    3. For each slot below, add an <img> tag inside the div:
+       <img src="images/your-file.jpg" alt="Description">
+    4. Optionally add a <div class="photo-caption">Caption text</div>
+    5. WIDE slots (photo-slot-wide) look best with horizontal/landscape images
+    6. You can add more slots by copying a <div class="photo-slot"> block
+  -->
+  <div class="photo-gallery">
+
+    <div class="photo-slot-wide">
+      <!-- <img src="images/photo-antarctic-wide.jpg" alt="Antarctic Peninsula"> -->
+      <div class="photo-ph"><i class="fas fa-image"></i><span>Wide landscape — Antarctic Peninsula fieldwork</span></div>
+      <div class="photo-caption">Antarctic Peninsula</div>
+    </div>
+
+    <div class="photo-slot">
+      <!-- <img src="images/photo-humpback.jpg" alt="Humpback whale breach"> -->
+      <div class="photo-ph"><i class="fas fa-water"></i><span>Humpback whale</span></div>
+      <div class="photo-caption">Humpback whale breach</div>
+    </div>
+
+    <div class="photo-slot">
+      <!-- <img src="images/photo-fieldwork.jpg" alt="Field team"> -->
+      <div class="photo-ph"><i class="fas fa-users"></i><span>Field team</span></div>
+      <div class="photo-caption">Field team at Palmer Station</div>
+    </div>
+
+    <div class="photo-slot-wide">
+      <!-- <img src="images/photo-monterey-wide.jpg" alt="Monterey Bay"> -->
+      <div class="photo-ph"><i class="fas fa-image"></i><span>Wide landscape — Monterey Bay or boat deck</span></div>
+      <div class="photo-caption">Monterey Bay</div>
+    </div>
+
+    <div class="photo-slot">
+      <!-- <img src="images/photo-ice.jpg" alt="Antarctic sea ice"> -->
+      <div class="photo-ph"><i class="fas fa-snowflake"></i><span>Antarctic sea ice</span></div>
+      <div class="photo-caption">Sea ice, Western Antarctic Peninsula</div>
+    </div>
+
+    <div class="photo-slot">
+      <!-- <img src="images/photo-biopsy.jpg" alt="Biopsy sampling"> -->
+      <div class="photo-ph"><i class="fas fa-syringe"></i><span>Biopsy sampling</span></div>
+      <div class="photo-caption">Biopsy sampling, humpback whale</div>
+    </div>
+
+    <div class="photo-slot-wide">
+      <!-- <img src="images/photo-ocean-wide.jpg" alt="Open ocean"> -->
+      <div class="photo-ph"><i class="fas fa-image"></i><span>Wide — open ocean or sunset at sea</span></div>
+      <div class="photo-caption">Southern Ocean</div>
+    </div>
+
+    <div class="photo-slot">
+      <!-- <img src="images/photo-lab.jpg" alt="Lab work"> -->
+      <div class="photo-ph"><i class="fas fa-microscope"></i><span>Lab / benchwork</span></div>
+      <div class="photo-caption">Hormone extraction, blubber samples</div>
+    </div>
+
+    <div class="photo-slot">
+      <!-- <img src="images/photo-penguins.jpg" alt="Penguins"> -->
+      <div class="photo-ph"><i class="fas fa-crow"></i><span>Wildlife — penguins or seals</span></div>
+      <div class="photo-caption">Adélie penguins, Palmer Station</div>
+    </div>
+
+  </div>
+
+  <div class="photo-upload-note">
+    → To add photos: place images in the images/ folder and update the src attributes in the HTML comments above ←
+  </div>
+
+</section>
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section class="page-section" id="contact">
+  <div class="contact-wrapper">
+    <div class="contact-card">
+      <div class="contact-avatar">LJP</div>
+      <h2>Let's Connect</h2>
+      <p class="contact-role">Postdoctoral Researcher · Marine Ecophysiologist</p>
+      <p class="contact-inst">Department of Ocean Sciences &amp; IAS · UC Santa Cruz</p>
+
+      <a href="mailto:lpallin@ucsc.edu" class="contact-email-link">
+        <i class="fas fa-envelope"></i> lpallin@ucsc.edu
+      </a>
+
+      <div class="contact-divider"></div>
+
+      <div class="social-label">Find me online</div>
+      <div class="social-links">
+        <a href="https://twitter.com/logan_pallin" class="social-link twitter" target="_blank">
+          <i class="fab fa-twitter"></i> @logan_pallin
+        </a>
+        <a href="https://www.instagram.com/" class="social-link instagram" target="_blank">
+          <!-- ★ UPDATE: Add your Instagram handle here, e.g. https://www.instagram.com/loganpallin -->
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://scholar.google.com/citations?user=PLACEHOLDER" class="social-link scholar" target="_blank">
+          <!-- ★ UPDATE: Replace PLACEHOLDER with your Google Scholar user ID -->
+          <i class="fas fa-graduation-cap"></i> Google Scholar
+        </a>
+        <a href="https://orcid.org/0000-0001-8024-9663" class="social-link orcid" target="_blank">
+          <i class="fas fa-id-badge"></i> ORCID
+        </a>
+      </div>
+
+      <div class="contact-address">
+        Department of Ocean Sciences<br>
+        University of California, Santa Cruz<br>
+        115 McAllister Way · Santa Cruz, California 95060
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="site-footer">
+  <span>© 2026 Logan J. Pallin · Marine Vertebrate Ecophysiology · UC Santa Cruz</span>
+  &nbsp;·&nbsp;
+  <a href="mailto:lpallin@ucsc.edu">lpallin@ucsc.edu</a>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  /* ---- Section navigation ---- */
+  function showSection(id) {
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) target.classList.add('active');
+    const navLink = document.querySelector(`[data-section="${id}"]`);
+    if (navLink) navLink.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    document.getElementById('navLinks').classList.remove('open');
+    setTimeout(initReveal, 60);
+  }
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      showSection(this.dataset.section);
+    });
+  });
+
+  /* ---- Mobile nav ---- */
+  function toggleMobileNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  /* ---- Publication filter ---- */
+  function filterPubs(btn, group) {
+    document.querySelectorAll('.pub-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.pub-group').forEach(g => {
+      g.style.display = (group === 'all' || g.dataset.group === group) ? 'block' : 'none';
+    });
+  }
+
+  /* ---- Scroll-reveal ---- */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  function initReveal() {
+    const targets = document.querySelectorAll(
+      '.active .research-card, .active .focus-card, ' +
+      '.active .media-item, .active .initiative-card, ' +
+      '.active .pub-item, .active .photo-slot, .active .photo-slot-wide'
+    );
+    targets.forEach((el, i) => {
+      if (el.style.opacity !== '1') {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(18px)';
+        el.style.transition = `opacity 0.5s ease ${i * 0.04}s, transform 0.5s ease ${i * 0.04}s`;
+        revealObserver.observe(el);
+      }
+    });
+  }
+
+  // Init on load
+  initReveal();
+</script>
+
+</body>
+</html>
