@@ -422,6 +422,15 @@
       gap: 28px;
       padding-bottom: 96px;
     }
+    .research-card-featured {
+      grid-column: span 3;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+    }
+    .research-card-featured .research-card-img {
+      height: 100%;
+      min-height: 220px;
+    }
     .research-card {
       background: var(--c-white);
       border-radius: var(--radius);
@@ -1134,31 +1143,34 @@
   <div class="section-header">
     <div class="section-eyebrow">Science &amp; Discovery</div>
     <h2 class="section-title">Active Research Areas</h2>
-    <p class="section-subtitle">Integrating physiology, ecology, and conservation biology to understand how marine mammals navigate a changing planet.</p>
+    <p class="section-subtitle">Integrating physiology, ecology, and conservation biology to understand how marine vertebrates navigate a changing planet.</p>
     <div class="section-rule"></div>
   </div>
 
   <div class="container">
     <div class="research-grid">
 
-      <!-- 1. Reproductive Physiology -->
-      <div class="research-card">
+      <!-- 1. Physiological & Health Metrics -->
+      <div class="research-card research-card-featured">
         <div class="research-card-img img-repro">
           <!--
             ★ FIGURE: Replace this block with a publication figure.
-            Example: <img src="images/research-repro.jpg" alt="Blubber endocrinology" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            Example: <img src="images/research-physiology.jpg" alt="Physiological metrics" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           -->
           <i class="fas fa-dna" style="color:var(--c-teal);"></i>
           <span>Add publication figure</span>
         </div>
         <div class="research-card-body">
-          <span class="research-card-tag tag-repro">Reproductive Physiology</span>
-          <h3>Blubber Endocrinology &amp; Reproductive Status</h3>
-          <p>I developed and validated a non-invasive blubber-based pregnancy test for humpback whales — enabling detection of reproductive status from biopsy samples without ever needing to observe a calf. Progesterone, cortisol, and thyroid hormones extracted from blubber reveal the reproductive dynamics of recovering whale populations across multiple ocean basins.</p>
+          <span class="research-card-tag tag-repro">Physiology &amp; Health</span>
+          <h3>Physiological &amp; Health Metrics</h3>
+          <p>From blubber hormone assays that reveal reproductive state and physiological stress, to genetic tools that reconstruct population structure and demographic trends, this work builds the physiological and health toolkit needed to monitor wildlife populations at scale. These approaches are minimally invasive — a significant evolution beyond the destructive methods of commercial and scientific whaling — allowing us to track population health across ocean basins and over time. Together, these metrics form a mechanistic link between individual health and population dynamics, enabling detection of how environmental and anthropogenic pressures translate into population-level consequences.</p>
           <div class="research-card-links">
             <a href="https://doi.org/10.1093/conphys/coy031" class="pub-chip" target="_blank">Pallin et al. 2018</a>
-            <a href="https://doi.org/10.1093/conphys/coae038" class="pub-chip" target="_blank">Pallin et al. 2024</a>
             <a href="https://doi.org/10.1098/rsos.180017" class="pub-chip" target="_blank">Pallin et al. 2018b</a>
+            <a href="https://doi.org/10.1038/s41598-022-24704-6" class="pub-chip" target="_blank">Pallin et al. 2022</a>
+            <a href="http://doi.org/10.1098/rsos.220724" class="pub-chip" target="_blank">Pallin et al. 2022b</a>
+            <a href="https://doi.org/10.1093/conphys/coae038" class="pub-chip" target="_blank">Pallin et al. 2024</a>
+            <a href="https://doi.org/10.1038/s41598-021-02612-5" class="pub-chip" target="_blank">Marcondes et al. 2021</a>
           </div>
         </div>
       </div>
@@ -1176,7 +1188,7 @@
         <div class="research-card-body">
           <span class="research-card-tag tag-climate">Climate &amp; Ecosystem</span>
           <h3>Krill Availability &amp; Antarctic Baleen Whale Health</h3>
-          <p>In the rapidly warming Antarctic Peninsula, shifts in sea ice alter krill abundance — with direct consequences for the whales that depend on them. My research links environmental variability, foraging ecology, and body condition to reveal when "surplus" krill is no longer sufficient to sustain whale population growth and reproductive success.</p>
+          <p>In the rapidly warming Southern Ocean, shifts in sea ice alter krill abundance — with direct consequences for the whales that depend on them. My research links environmental variability, foraging ecology, and population health to changes in whale population growth and reproductive success.</p>
           <div class="research-card-links">
             <a href="https://doi.org/10.1111/gcb.16559" class="pub-chip" target="_blank">Pallin et al. 2023</a>
             <a href="https://doi.org/10.3389/fmars.2022.1036860" class="pub-chip" target="_blank">Bierlich et al. 2022</a>
@@ -1184,46 +1196,7 @@
         </div>
       </div>
 
-      <!-- 3. Stress Physiology -->
-      <div class="research-card">
-        <div class="research-card-img img-stress">
-          <!--
-            ★ FIGURE: Replace with cortisol figure from Pallin et al. 2022 (Scientific Reports).
-          -->
-          <i class="fas fa-wave-square" style="color:var(--c-coral);"></i>
-          <span>Add publication figure</span>
-        </div>
-        <div class="research-card-body">
-          <span class="research-card-tag tag-stress">Stress Physiology</span>
-          <h3>Anthropogenic Stressors &amp; Glucocorticoids</h3>
-          <p>Blubber cortisol integrates chronic stress over weeks to months — a powerful window into the sub-lethal impacts of shipping, noise, and climate. I leveraged the COVID-19 "anthropause" as a natural experiment, documenting how sudden reductions in ocean noise and vessel traffic measurably reduced whale stress hormones in Monterey Bay and along the Antarctic Peninsula.</p>
-          <div class="research-card-links">
-            <a href="https://doi.org/10.1038/s41598-022-24704-6" class="pub-chip" target="_blank">Pallin et al. 2022</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. Population Connectivity -->
-      <div class="research-card">
-        <div class="research-card-img img-pop">
-          <!--
-            ★ FIGURE: Replace with demography or connectivity figure.
-          -->
-          <i class="fas fa-globe-americas" style="color:#8a6d00;"></i>
-          <span>Add publication figure</span>
-        </div>
-        <div class="research-card-body">
-          <span class="research-card-tag tag-pop">Population Ecology</span>
-          <h3>Demography, Connectivity &amp; Photo-ID</h3>
-          <p>Combining genetics, photo-identification, and biomarkers across 13+ years and thousands of animals, I reconstruct population structure and migratory connectivity of humpback and Antarctic minke whales spanning multiple ocean basins. My demographic work revealed the remarkable recovery of ice-obligate mysticetes and quantified how migratory fidelity shapes genetic structure over four decades.</p>
-          <div class="research-card-links">
-            <a href="http://doi.org/10.1098/rsos.220724" class="pub-chip" target="_blank">Pallin et al. 2022</a>
-            <a href="https://doi.org/10.1038/s41598-021-02612-5" class="pub-chip" target="_blank">Marcondes et al. 2021</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. Conservation & Adaptive Management -->
+      <!-- 3. Conservation & Adaptive Management -->
       <div class="research-card">
         <div class="research-card-img img-dive">
           <!--
@@ -1236,7 +1209,7 @@
         <div class="research-card-body">
           <span class="research-card-tag tag-dive">Conservation Science</span>
           <h3>Whales, Krill Fisheries &amp; Adaptive Management</h3>
-          <p>Baleen whales are the largest krill consumers in the Antarctic ecosystem — yet they are entirely absent from CCAMLR's Ecosystem Monitoring Program (CEMP). As recovering whale populations re-occupy the Southern Ocean and the commercial krill fishery proposes expanding catch limits by nearly 4×, the collision course between conservation and industry is accelerating. A single fishing vessel can harvest up to 1,000 metric tons of krill per day — roughly the foraging equivalent of 288 humpback whales. My ongoing work aims to establish the first whale-focused CEMP monitoring site, delivering pregnancy rate data and real-time physiological indicators directly into CCAMLR's management decision cycle. The goal is straightforward: ensure that krill fishery management accounts for its largest and least-counted predator — and that the management keeps pace with both ecosystem change and population recovery.</p>
+          <p>Baleen whales are the largest krill consumers in the Antarctic ecosystem. As these populations recover and re-occupy the Southern Ocean while the commercial krill fishery simultaneously expands, the collision course between conservation and industry is accelerating. My ongoing work — in collaboration with national delegations and NGOs — aims to establish real-time physiological and health indicators that feed directly into management decision cycles, so that conservation policy can keep pace with both ecosystem change and population recovery.</p>
           <div class="research-card-links">
             <a href="https://orcid.org/0000-0001-8024-9663" class="pub-chip" target="_blank">Work in Progress</a>
           </div>
